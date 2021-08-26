@@ -3,7 +3,6 @@ package com.ly.packetcapture.config
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.ly.packetcapture.config.MyApplication
 
 class MyApplication : Application() {
     override fun onCreate() {

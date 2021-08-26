@@ -5,7 +5,7 @@ import java.util.HashMap
 import kotlin.jvm.Synchronized
 
 class ObjAttrUtil {
-    private val objAttrs: MutableMap<SocketChannel, MutableMap<String, Any>> = HashMap()
+    private val objAttrs: MutableMap<SocketChannel?, MutableMap<String, Any>> = HashMap()
     @Synchronized
     fun getAttr(obj: Any?, k: String): Any? {
         val map = objAttrs[obj] ?: return null
@@ -19,7 +19,7 @@ class ObjAttrUtil {
      * @param value
      */
     @Synchronized
-    fun setAttr(socketChannel: SocketChannel, k: String, value: Any) {
+    fun setAttr(socketChannel: SocketChannel?, k: String, value: Any) {
         var map = objAttrs[socketChannel]
         if (map == null) {
             objAttrs[socketChannel] = HashMap()

@@ -155,7 +155,7 @@ object LogUtil {
     /**
      * 获取默认的TAG名称. 比如在MainActivity.java中调用了日志输出. 则TAG为MainActivity
      */
-    fun getDefaultTag(stackTraceElement: StackTraceElement): String {
+    private fun getDefaultTag(stackTraceElement: StackTraceElement): String {
         val fileName = stackTraceElement.fileName
         val stringArray = fileName.split("\\.").toTypedArray()
         return stringArray[0]

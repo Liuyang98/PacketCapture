@@ -17,7 +17,6 @@ object DatabaseUtil {
             .build().getNetDao()
     }
 
-
     fun insert(netData: NetData){
         GlobalScope.launch(Dispatchers.IO) {
             netDao.insert(netData)

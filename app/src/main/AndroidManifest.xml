@@ -21,11 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.ly.packetcapture.ui.applist.AppListActivity" />
-        <activity android:name=".ui.record.RecordActivity" />
+        <activity android:name="com.ly.packetcapture.ui.act.AppListActivity" />
+        <activity android:name=".ui.act.RecordActivity" />
 
         <service
-            android:name=".vpn.LocalVPNService"
+            android:name=".vpn.service.LocalVPNService"
             android:permission="android.permission.BIND_VPN_SERVICE">
             <intent-filter>
                 <action android:name="android.net.VpnService" />

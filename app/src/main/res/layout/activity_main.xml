@@ -69,7 +69,7 @@
         android:id="@+id/button4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="ipSee"
+        android:onClick="reqSee"
         android:text="查看日志"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="ipShare"
+        android:onClick="reqShare"
         android:text="分享日志"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

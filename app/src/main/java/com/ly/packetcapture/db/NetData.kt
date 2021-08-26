@@ -39,10 +39,6 @@ class NetData {
     @ColumnInfo(name = "port")
     var port: String? = null
 
-    constructor() {
-
-    }
-
     /**
      * DNS信息
      */
@@ -66,7 +62,6 @@ class NetData {
         LogUtil.i("地址：$ip：端口：$port：$protocol")
     }
 
-
     override fun toString(): String {
         return if (dns == 0) {
             formatOrderTime(time) + " : " + ip!!.replace("/", "") + ":" + port + " - " + protocol
@@ -75,8 +70,7 @@ class NetData {
         }
     }
 
-
-    fun formatOrderTime(date: Long): String {
+    private fun formatOrderTime(date: Long): String {
         return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date(date))
     }
 

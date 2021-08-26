@@ -28,7 +28,6 @@ object FileUtil {
         try {
             //创建文件，并写入内容
             outputStream = FileOutputStream(File(p))
-//            val msg: String = String(phoneNumber)
             outputStream.write(phoneNumber.toByteArray(charset("UTF-8")))
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
