@@ -3,7 +3,7 @@ package com.ly.packetcapture.vpn.protocol.dns;
 import java.nio.ByteBuffer;
 
 /**
- * Created by zengzheying on 15/12/29.
+ * create by ly on 2021/8/18
  */
 public class Question {
 

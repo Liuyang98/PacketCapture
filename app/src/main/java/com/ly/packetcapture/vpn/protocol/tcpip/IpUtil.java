@@ -43,7 +43,7 @@ public class IpUtil {
         packet.ip4Header = ip4Header;
         packet.udpHeader = udpHeader;
         packet.backingBuffer = byteBuffer;
-        logInfo(packet);
+//        logInfo(packet);
         return packet;
     }
     public static Packet buildTcpPacket(InetSocketAddress source, InetSocketAddress dest, byte flag, long ack, long seq, int ipId) {

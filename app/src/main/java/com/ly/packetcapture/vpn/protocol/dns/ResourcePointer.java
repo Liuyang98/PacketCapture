@@ -1,8 +1,7 @@
 package com.ly.packetcapture.vpn.protocol.dns;
 
-
 /**
- * Created by zengzheying on 15/12/29.
+ * create by ly on 2021/8/18
  */
 public class ResourcePointer {
 

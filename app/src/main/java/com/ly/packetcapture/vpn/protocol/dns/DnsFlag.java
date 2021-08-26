@@ -1,7 +1,7 @@
 package com.ly.packetcapture.vpn.protocol.dns;
 
 /**
- * Created by zengzheying on 15/12/28.
+ * create by ly on 2021/8/18
  */
 public class DnsFlag {
 
@@ -41,7 +41,7 @@ public class DnsFlag {
 
 
 	//下面的实现好像与实际的格式不符，不知道是不是SmartProxy作者弄错了，先把原来的注释，按照我理解的格式来写
-	//                                                                                  —— by Zeeying
+	//
 	public static DnsFlag Parse(short value) {
 		int flags = value & 0xFFFF;
 		DnsFlag flag = new DnsFlag();

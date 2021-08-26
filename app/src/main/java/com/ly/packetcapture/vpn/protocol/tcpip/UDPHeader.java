@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 
 /**
  * create by ly on 2021/8/18
- */
+*/
 
 public  class UDPHeader {
     public int sourcePort;
@@ -24,7 +24,6 @@ public  class UDPHeader {
 
         this.length = BitUtils.getUnsignedShort(buffer.getShort());
         this.checksum = BitUtils.getUnsignedShort(buffer.getShort());
-//            LogUtil.e("UDP头信息：:sourcePort"+sourcePort+"::destinationPort::"+destinationPort+":::length:::"+length+":::checksum:::"+checksum);
     }
 
     public void fillHeader(ByteBuffer buffer) {
