@@ -39,6 +39,9 @@ class NetData {
     @ColumnInfo(name = "port")
     var port: String? = null
 
+    constructor() {
+    }
+
     /**
      * DNS信息
      */
