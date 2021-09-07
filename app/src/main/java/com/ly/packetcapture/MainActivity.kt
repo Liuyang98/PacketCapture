@@ -16,7 +16,6 @@ import com.ly.packetcapture.util.*
 import com.ly.packetcapture.vpn.service.LocalVPNService
 
 class MainActivity : AppCompatActivity() {
-    private val VPN_REQUEST_CODE = 0x0F
     private lateinit var bind: ActivityMainBinding
     private val vm: MainViewModel by viewModels()
 
@@ -27,39 +26,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * 启动VPN
-     */
-    private fun startVpn() {
-        vm.startDataSave()
-        val vpnIntent = VpnService.prepare(this)
-        if (vpnIntent != null) {
-            startActivityForResult(vpnIntent, VPN_REQUEST_CODE)
-        } else {
-            onActivityResult(VPN_REQUEST_CODE, RESULT_OK, null)
-        }
-    }
-
-    /**
-     * 关闭VPN
-     */
-    private fun stopVpn() {
-        val intent = Intent(this, LocalVPNService::class.java)
-        intent.putExtra("exit", true)
-        startService(intent)
-    }
-
-    /**
      * 开启VPN
      */
-    fun openVpn(view: View?) {
+    fun openVpn(view: View) {
         val running = ServiceUtil.isServiceRunning(LocalVPNService::class.java.name)
-        if (running) {
+        if (running) {//关闭VPN
             bind.tvOpenVpn.text = getString(R.string.vpn_start)
-            stopVpn()
-        } else {
+            val intent = Intent(this, LocalVPNService::class.java)
+            intent.putExtra("exit", true)
+            startService(intent)
+        } else {//启动VPN
             if (vm.hasSelectApp()) {
                 bind.tvOpenVpn.text = getString(R.string.vpn_running)
-                startVpn()
+                vm.startDataSave()
+                VpnService.prepare(this)
+                startService(Intent(this, LocalVPNService::class.java))
             } else {
                 Toast.makeText(this, getString(R.string.no_select_app), Toast.LENGTH_SHORT).show()
             }
@@ -70,7 +51,7 @@ class MainActivity : AppCompatActivity() {
      * 应用选择
      * @param view
      */
-    fun selectApp(view: View?) {
+    fun selectApp(view: View) {
         if (ServiceUtil.isServiceRunning(LocalVPNService::class.java.name)) {
             Toast.makeText(this, getString(R.string.change_select_in_running), Toast.LENGTH_SHORT).show()
         }
@@ -82,7 +63,7 @@ class MainActivity : AppCompatActivity() {
      *
      * @param view
      */
-    fun dnsSee(view: View?) {
+    fun dnsSee(view: View) {
         RecordActivity.to(this, true)
     }
 
@@ -91,7 +72,7 @@ class MainActivity : AppCompatActivity() {
      *
      * @param view
      */
-    fun dnsShare(view: View?) {
+    fun dnsShare(view: View) {
         vm.dealShareDnsData(this)
         IntentUtil.shareTxtFile(this)
     }
@@ -101,7 +82,7 @@ class MainActivity : AppCompatActivity() {
      *
      * @param view
      */
-    fun reqSee(view: View?) {
+    fun reqSee(view: View) {
         RecordActivity.to(this, false)
     }
 
@@ -110,17 +91,10 @@ class MainActivity : AppCompatActivity() {
      *
      * @param view
      */
-    fun reqShare(view: View?) {
+    fun reqShare(view: View) {
         vm.dealShareReqData(this)
         IntentUtil.shareTxtFile(this)
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == VPN_REQUEST_CODE && resultCode == RESULT_OK) {
-            startService(Intent(this, LocalVPNService::class.java))
-        }
-    }
 
 }

@@ -13,7 +13,6 @@ object DatabaseUtil {
     val netDao by lazy {
         Room.databaseBuilder(MyApplication.context, AppDatabase::class.java, "database-net")
             .fallbackToDestructiveMigration()
-            .allowMainThreadQueries()
             .build().getNetDao()
     }
 

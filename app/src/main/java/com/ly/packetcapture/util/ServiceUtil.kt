@@ -9,8 +9,7 @@ import com.ly.packetcapture.config.MyApplication
  */
 object ServiceUtil {
     fun isServiceRunning(serviceClassName: String): Boolean {
-        val activityManager =
-            MyApplication.context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val activityManager = MyApplication.context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val services = activityManager.getRunningServices(Int.MAX_VALUE)
         for (runningServiceInfo in services) {
             if (runningServiceInfo.service.className == serviceClassName) {
