@@ -37,6 +37,12 @@ class LocalVPNService : VpnService() {
         executorService = Executors.newFixedThreadPool(10)
         executorService.submit(BioUdpHandler(deviceToNetworkUDPQueue!!, networkToDeviceQueue!!, this))
         executorService.submit(NioSingleThreadTcpHandler(deviceToNetworkTCPQueue!!, networkToDeviceQueue!!, this))
+
+        deviceToNetworkUDPQueue!!
+        deviceToNetworkTCPQueue!!
+        networkToDeviceQueue!!
+        vpnInterface!!
+
         executorService.submit(VPNRunnable(vpnInterface!!.fileDescriptor, deviceToNetworkUDPQueue!!, deviceToNetworkTCPQueue!!, networkToDeviceQueue!!))
     }
 
